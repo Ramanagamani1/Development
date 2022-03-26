@@ -226,3 +226,4 @@ code_promise.then(
 var Promise = function(executor){
     
 }
+

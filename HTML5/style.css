@@ -1,0 +1,19 @@
+.outer > .inner{
+    /* child combinator */
+   background-color: aqua;
+}
+
+.out .in{
+    /* descendant combinator */
+    background-color: pink;
+ }
+ 
+ div + p{
+     /* adjacent combinator */
+     color:green;
+ }
+
+ div ~ p {
+     /* General Sibling combinator */
+     font-weight: bold;
+ }

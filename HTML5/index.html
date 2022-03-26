@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* ol ol {
+            display: none;
+        }
+        ol > li:hover > ol,
+        ol > li > ol > li:hover > ol > li:hover > ol,
+        ol > li > ol > li:hover > ol {
+            display: block;
+        } */
+        .c1 {
+            font-size: 30px;
+            color:blue;
+        }
+        .c2 {
+            color:red;
+        }
+        li li {
+            height:0;
+            visibility: hidden;
+        }
+        li:hover > * > li {
+           height:auto;
+           visibility: visible;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1>Hello world</h1>
+    <abbr title="Javascript">JS</abbr>
+    <ol>
+        <li>one
+            <ol>
+                <li>one one</li>
+                <li>one two
+                    <ol>
+                        <li>one two one</li>
+                        <li>one two two</li>
+                    </ol>
+                </li>
+                <li>one three</li>
+            </ol>
+        </li>
+        <li>two
+            <ol>
+                <li>two one</li>
+                <li>two two</li>
+                <li>two three</li>
+            </ol>
+        </li>
+        <li>three
+            <ol>
+                <li>three one</li>
+                <li>three two</li>
+                <li>three three</li>
+            </ol>
+        </li>
+    </ol>
+    <p class="c1 c2">Happy coding!!!</p>
+    
+    <div class="outer">
+        <p class="inner">
+            Child combinator
+        </p>
+        <p class="inner">Another child</p>
+    </div>
+
+    <div class="out">
+        <div class="middle">
+        <p class="in">
+            Descendant combinator
+        </p>
+    </div>
+    </div>
+
+
+    <div>
+        this is a div
+    </div>
+    <p>para after div. </p>
+    <p>Sardhaar Udhaam</p>
+    <p>adjacent combinator</p>
+</body>
+</html>

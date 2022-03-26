@@ -1,0 +1,228 @@
+falsy values = false,null,undefined,0,"",NaN
+scope is different for var and let
+In javascript everything is treated as an object(array,function,objects)
+&. (ES6) => it will evaluate only if value is present 
+objects are always passed by reference
+Spidermonkey is the javascript engine used by Firefox.
+V8 is js engine used by Chrome
+methods are dependent on objects. Functions are independent
+
+Invocation patterns:
+==================
+method invocation
+function invocation
+apply invocation : func_name.apply(context/this,array of args). It helps you to set the context
+constructor Invocation: 
+this will set to newly created object
+var Dog= function(config){
+        this.name=config.name      
+}
+var tommy = new Dog({name:"Tommy"})
+to create 100 pets using constructor invocation
+var myPets=[]
+for(i=0;i<100;i++){
+    var pet=new Dog({"Tommy"+i});
+    myPets.push(pet);
+}
+
+Enumeration:
+============
+for(property in tommy){
+    print(property)
+    print(tommy[property]);
+    //we can't use tommy.property as it will search for key property.
+}
+
+Prototypes: 
+-----------
+var myobj={}
+myobj.xyz // undefined
+myobj.prototype // not undefined
+as soon as an object is created, a prototype will be associated with it
+Prototype will not create a deep copy
+prototype is used on Functions and __proto__ is used on objects
+
+Eg : var ruby={}
+     ruby.__proto__ = tommy (or) ruby.prototype=tommy
+     ruby.name = "tommy"
+     ruby.name="Ruby"
+     tommy.name="tommy"
+In javascript for object retrieval it will check if the keys exist. If they are not present, it will 
+check in the prototype object.
+
+var Animal=function(name){
+    this.name=name;
+}
+
+Animal.prototype.eat=function(food){
+    this.lastMeal=food;
+}
+var a1=new Animal("Adam");
+a1.name// Adam
+a1.eat("apple") // lastMeal of a1=apple
+
+Dog.prototype=new Animal();
+Dog.prototype.bark=function(){}
+
+If we define bark fun in dog object , then if we want to create 1000 instances of dog , that bark 
+function will be created separately for all instances which leads to memory consumption. So if we use prototype
+all the instances will refer to same function(created by prototype)// similar to static in java
+
+Inheritance is driven through objects.
+composition design pattern used for inheriting from 2 objects.
+
+Global Abatment: 
+===============
+high level object defined. All other objects will be created under this high level object.
+var my_app={}
+  my_app.dog=
+  my_app.animal=
+
+Scope:
+======
+Block level scope {}
+function level scope
+var my_func=function(){
+    var a=2; // this variable will be available within this function
+}
+If we define a variable independently it is a global scope.
+
+Closure: 
+========
+A closure is the combination of a function bundled together (enclosed) with 
+references to its surrounding state (the lexical environment). In other words, 
+a closure gives you access to an outer function's scope from an inner function. 
+
+var my_func=function(){
+    var a=2;
+    var change_a=function(newval){
+        a=newval;
+    }
+    print(a)//2
+    change_a(15)
+    print(a)//15
+    return change_a;
+}
+change_val=my_func()
+change_val(20)
+
+To access the value of a , we write 2 functions instead of one
+
+var my_func=function(){
+    var a=2;
+    set_a=function(newval){
+        a=newval;
+    }
+    get_a=function(){
+        return a;
+    }
+    return {
+        setA:set_a,
+        getA: get_a
+    }
+}
+closedA=my_func();
+closedA.getA(); //2
+closedA.setA(50)
+closedA.getA() //50
+
+Callbacks:
+==========
+
+synchronous: eg: phone call. needs to wait until current task is executed
+var my_func=function(){
+    // send request to google.com
+      5 secs
+    // print res
+    var res = submit_code(code);
+    print(result)
+}
+
+asynchronous : eg: email. no need to wait
+var show_res=function(res){
+    print(res);
+}
+submit_code(code,show_res); // here show_res is a callback function
+fetch_async("url",function(data){
+    console.log(data);
+})
+
+Javascript by default is a single threaded environment.
+AJAX : Async Javascript and XML Request - sending and receiving data to server without refreshing/reloading the page. Used for making 
+asynchronous calls to remote servers.
+
+setTimeout(function(){
+   console.log(123)
+},10000)
+
+setInterval : run the func every time after some interval.If one of the interval is skipped as the main thread is busy,
+it goes to the next interval not executing the skipped one.
+
+setTimeout will run all times but later some point of time
+
+The event loop: JavaScript has a runtime model based on an event loop, which is responsible for executing the code, 
+collecting and processing events, and executing queued sub-tasks. This model is quite different from models in other languages like C and Java.
+The function present in timeout will go into even loop and will be executed only after the thread is completed.
+event loop will create an array and store all callbacks and will be executed only after all other statements are completed
+
+setTimeout(function(){
+    console.log("hello");
+},0)
+console.log("world")
+console.log("abc")
+
+// prints: world abc hello
+
+Promises: 
+=========
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+A promise can be in 3 states. pending, fulfilled,rejected
+Promise.prototype.then() = if the promise is fulfilled
+Promise.prototype.catch() = if the promise is rejected.
+
+callback pyramid / callback hell:
+---------------------------------
+plan_meet_in_coffee_shop(function(){
+    // buy coffee
+    doAssignment(function(){
+
+    });
+}, function(){
+     // if they dont meet up
+});
+
+Promise:
+---------
+var coffee_meet_plan = new Promise(
+    function(resolve,reject) {
+        // enter coffee shop
+        if(both friends turned up)
+             resolve();
+        else{
+               reject();
+        }
+    }
+)
+the function in promise is called as executor function
+coffee_meet_plan.then(function(){
+    // buy coffee
+    // do assignments
+}).catch(function(){
+    // collect money from friend for not meeting
+})
+
+or
+
+coffee_meet_plan.then(buy_coffee).then(doAssignment)
+.catch(punish_ditcher)
+
+var code_submit_promise = submit_code();
+code_promise.then(
+    show_success_result;
+).catch(show_failed_result)
+
+.then(func1,func2) is same as .then(func1).catch(func2)
+
+var Promise = function(executor){
+    
+}

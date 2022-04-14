@@ -1,0 +1,20 @@
+body {
+    margin: 10px;
+    padding: 10px;
+}
+
+input{
+    font-size: large;
+    margin: 5px;
+}
+
+button {
+    margin-left: 10px;
+    margin-bottom: 7px;
+  }
+  
+
+div {
+    margin-bottom: 20px;
+}
+  

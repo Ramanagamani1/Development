@@ -227,3 +227,6 @@ var Promise = function(executor){
     
 }
 
+Companies using react :
+----------------------
+Facebook,Instagram, Swiggy, Zomato,Uber, Airbnb,Skype, Discord,Tesla

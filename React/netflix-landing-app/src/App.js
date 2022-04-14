@@ -1,13 +1,15 @@
 import React from 'react';
 import { Navbar, Body ,Todos, Background} from './components';
+import ClassComponent from './components/ClassComponent';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Background/>
+      {/* <Background/> */}
       <Navbar/>
       <Todos/>
+      {/* <ClassComponent/> */}
     </div>
   );
 }

@@ -5,5 +5,10 @@
 }
 
 html,body {
-  color: white;
+  color: black;
+}
+
+.todo {
+  padding: 1rem;
+  border: 1rem solid grey
 }

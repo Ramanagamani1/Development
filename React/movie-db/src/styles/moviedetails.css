@@ -1,0 +1,38 @@
+.movieposter {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 90vh;
+    background: #243240;
+    color: #fff;
+    border-radius: 30px;
+    border: 1px inset #fff;
+    padding: 15px;
+}
+
+.movie-details {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        grid-gap: 20px;
+}
+
+.movie-details > img {
+    width: 95%;
+    padding: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.description {
+    overflow-y: scroll;
+    padding: 10px;
+}

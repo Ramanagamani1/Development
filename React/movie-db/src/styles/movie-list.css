@@ -1,0 +1,17 @@
+.movie-list {
+  border: 1px inset #fff;
+  margin: 0 5px;
+  height: 99%;
+  overflow-y: scroll;
+  display: grid;
+  background-color: #243240;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  grid-gap: 4px;
+}
+.nomovie {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    font-size: xxx-large;
+}

@@ -1,0 +1,15 @@
+Companies using react :
+----------------------
+Facebook,Instagram, Swiggy, Zomato,Uber, Airbnb,Skype, Discord,Tesla
+
+React Hooks:
+------------
+const [value, function] = useState(0) 
+this will make sure that component is rerendered whenever the value changes
+
+useEffect(()=>{},[]) second argument is the dependency element , whenever the second element changes then
+the first argument i.e. the function useEffect will be called, and rerender the component that many times.
+If the second argument is [], the function will be called only on the first render.
+
+immediately invoke functions (like anonymous funcs)
+(()=>{console.log("hello")})()  

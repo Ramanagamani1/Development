@@ -230,3 +230,20 @@ var Promise = function(executor){
 Companies using react :
 ----------------------
 Facebook,Instagram, Swiggy, Zomato,Uber, Airbnb,Skype, Discord,Tesla
+dribble.com - for templates
+unsplash
+unDraw
+
+React Context - https://codesandbox.io/s/lively-thunder-x60r3j?file=/src/Context.js
+
+dribble.com
+https://flexboxfroggy.com/
+
+React Hooks:
+------------
+useState
+useEffect
+useRef
+useContext
+useMemo
+useReducer

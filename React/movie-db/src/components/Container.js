@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import {Navbar} from './index'
 import MovieList from './MovieList';
+import About from '../pages/About';
+import Home from '../pages/Home';
 import axios from 'axios';
 import '../styles/container.css'
 import MovieDetails from './MovieDetails';
+import Movie from '../pages/Movie';
+import Details from '../pages/Details';
+import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom';
 
 const API_BASE_URL = "https://www.omdbapi.com"
 //&apikey=aa660442
@@ -45,8 +50,16 @@ export default function Container() {
   return (
     <div className='container'>
         <Navbar setMovie={setMovie} search={search}/>
-        {<MovieList movieList={movies} isLoading={isLoading} nextPage={nextPage} showDetails={showDetails}/>}
-        {movieDetails!="null" ? <MovieDetails details={movieDetails} setMovieDetails={setMovieDetails}/>: ""}
+        <Router>
+           <Routes>
+              <Route path="/movie-list" element={<Movie movieList={movies} isLoading={isLoading} nextPage={nextPage} showDetails={showDetails}/>}></Route>            
+              <Route path="/movie-list/:imdbID" element={movieDetails!="null" ? <Details details={movieDetails} setMovieDetails={setMovieDetails}/>:""}></Route>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/" element={<Home/>}/>
+           </Routes>
+        </Router>
+        {/* {<MovieList movieList={movies} isLoading={isLoading} nextPage={nextPage} showDetails={showDetails}/>}
+        { movieDetails!="null" ? <MovieDetails details={movieDetails} setMovieDetails={setMovieDetails}/>: ""} */}
     </div>
   )
 }

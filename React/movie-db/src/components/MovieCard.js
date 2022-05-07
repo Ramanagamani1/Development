@@ -1,8 +1,10 @@
 import React from 'react'
 import '../styles/movie-card.css'
+import {Link} from "react-router-dom"
 
 export default function MovieCard({movie,showDetails}) {
   return (
+   <Link to={`/movie-list/${movie.imdbID}`}>
     <div className='card' 
        onClick={(e)=>{
           showDetails(movie);
@@ -13,5 +15,6 @@ export default function MovieCard({movie,showDetails}) {
             <p>Year:{movie.Year}</p>
          </div>   
     </div>
+    </Link>
   )
 }

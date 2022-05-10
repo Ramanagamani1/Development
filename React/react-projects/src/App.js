@@ -1,20 +1,40 @@
-import "./styles.css";
-import Ref from "./Ref";
-import Prev from "./PrevStateRef";
-import Memo from "./Memo";
+import React, { useState, createContext } from "react";
+import CardGrid from "./components/CardGrid";
+import Cart from "./components/Cart";
+import Navbar from "./components/Navbar";
+import {navbar} from './data';
+import "./styles.scss";
 
-export default function App() {
-  return (
-    <div className="App">
-      <Memo />
-      <Prev />
-      <Ref />
-    </div>
-  );
-  // 1.use Ref -> doest not kicks re render
-  // 2. use Ref -> Access DOM element
-  // 3. use Ref -> Contains the previous state. (returns get printed, useEffect updates the value but doesnt reflect on the DOM because useRef does not re renders
-  //) on re render it takes that evaluated value and prints it and then did mount side effects runs -> again gets compputed =
+export const store= createContext([
+    { activeCategory: "dogs", cartItems: {}, totalPrice:0 },
+    (obj) => obj
+])
 
-  // useMemo -> memoisation do fib function memo.
+
+function App(){
+     const state = useState({
+        activeCategory: "dogs", 
+        cartItems: {}, 
+        totalPrice:0
+     })
+
+     const [isOpen,setIsOpen] = useState(false);
+
+     const cartHandler = () => {
+           setIsOpen(true);
+    }
+
+     return (
+        <store.Provider value={state}>
+            <div className="app-container">
+                <div className="app-header">
+                    <Navbar items={navbar} />
+                    <button className="button" onClick={cartHandler}>Cart</button>
+                    { isOpen ? <Cart isOpen={isOpen} setIsOpen={setIsOpen}/>: ""}
+                </div>
+                <CardGrid/>
+            </div>
+        </store.Provider>
+     )
 }
+export default App;

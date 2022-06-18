@@ -1,0 +1,33 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+/* relative, absolute, static, fixed */
+
+.flexbox-container {
+  background-color: yellow;
+  padding: 10px;
+}
+
+.flexbox-item {
+  width: 200px;
+  margin: 10px;
+}
+
+.flexbox-item-1 {
+  background-color: pink;
+  width: 100%;
+  min-height: 50px;
+  position: absolute;
+}
+.flexbox-item-2 {
+  background-color: green;
+  width: 100%;
+  min-height: 100px;
+}
+.flexbox-item-3 {
+  background-color: orange;
+  width: 100%;
+  min-height: 150px;
+}

@@ -13,3 +13,56 @@ If the second argument is [], the function will be called only on the first rend
 
 immediately invoke functions (like anonymous funcs)
 (()=>{console.log("hello")})()  
+
+
+React Hooks:
+------------
+useState 
+useEffect
+useRef
+useContext
+useMemo
+useReducer
+
+
+1.use Ref -> doest not kicks re render
+2. use Ref -> Access DOM element
+3. use Ref -> Contains the previous state. (returns get printed, useEffect updates the value but doesnt reflect on the DOM because useRef does not re renders
+   on re render it takes that evaluated value and prints it and then did mount side effects runs -> again gets compputed =
+useMemo -> memoisation do fib function memo.
+
+redux-store:
+------------
+// ACTION TYPES
+const ADD_TO_CART = "cart/ADD_TO_CART";
+const REMOVE_FROM_CART = "cart/REMOVE_FROM_CART";
+const DEFAULT_CART_ACTION = "cart/DEFAULT_CART_ACTION"
+
+// ACTIONS
+function addtoCart(itemDetails) {
+    return ({
+        type: ADD_TO_CART,
+        payload: itemDetails,
+    })
+}
+
+
+// REDUCER
+
+function reducer(state={items: []},action) {
+    switch(action.type) {
+        case DEFAULT_CART_ACTION:
+            //do nothing
+            return state;
+        case ADD_TO_CART:
+            //add item to cart
+            return {
+                ...state,
+                items: [...state.items,action.payload]
+            }
+        case REMOVE_FROM_CART:
+            // remove item from cart
+        default:
+            return state;
+    }
+}

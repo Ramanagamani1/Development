@@ -227,6 +227,13 @@ var Promise = function(executor){
     
 }
 
+main axis : horizontal - justify-content
+cross axis : vertical - align-items
+
+flex-shrink : does not shrink the item
+flex-grow
+flex-basis
+
 Companies using react :
 ----------------------
 Facebook,Instagram, Swiggy, Zomato,Uber, Airbnb,Skype, Discord,Tesla
@@ -241,9 +248,19 @@ https://flexboxfroggy.com/
 
 React Hooks:
 ------------
-useState
+useState 
 useEffect
 useRef
 useContext
 useMemo
 useReducer
+
+Redux:
+------
+
+There will be a redux central store. Component will subscribe to changes.(i.e it will fetches the data whenever
+there is change in the central store)If component wants to perform an action it dispactches the actions to the reducer.
+Actions contain the type and payload. Reducer accepts the dispatched actions and also maintains current state.
+Reducer performs actions on the current state of data and it will update data in the redux store.
+
+Dispatch is responsible for passing the actions to reducer.

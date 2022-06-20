@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import Cart from './UI/Cart';
 import { useDispatch,useSelector } from 'react-redux';
 import { toggleCart } from './store/cart';
+import Posts from "./pages/Posts";
 
 function App() {
   const {isOpen} = useSelector((state) => state.cartStore);
@@ -24,6 +25,7 @@ function App() {
     
         <Routes>
            <Route path="/" element={<Home></Home>}></Route>
+           <Route path="/posts" element={<Posts/>}></Route>
            <Route path="/about" element={<About/>}></Route>
            <Route path="items/:categoryId" element={<Items/>}></Route>
         </Routes>  

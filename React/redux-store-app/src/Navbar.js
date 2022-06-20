@@ -9,9 +9,10 @@ export default function Navbar() {
   return (
     <div className='navbar'>
         <NavLink to="/" className="navbar-item" >Home</NavLink>
+        <NavLink to="/posts" className="navbar-item" >Posts</NavLink>
         <NavLink to="/about" className="navbar-item" >About</NavLink>
         { categories.map((category)=> {
-          return <NavLink to={`items/${category.id}`} className="navbar-item">{category.name}</NavLink>
+          return <NavLink key={category.id} to={`items/${category.id}`} className="navbar-item">{category.name}</NavLink>
         })}
     </div>
   )

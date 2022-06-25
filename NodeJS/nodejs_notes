@@ -1,0 +1,15 @@
+Nodejs runs outside of the browser.
+
+It uses Google Javascript V8 engine.
+
+It does not have access to window,document objects. setTimeOut function,Math is present in window objects, so we cannot access them with window object. window is a way to access browser window and has a global scope and is the outer most object
+
+But, nodejs has an object called global by which we can use the setTimeOut,Math functions
+process is not accessible in js from client side but its accessible from server side
+
+Express js is the most popular library to create servers
+
+Port no: 0-1024 reserved
+80 - http
+443 - https
+23 - telnet

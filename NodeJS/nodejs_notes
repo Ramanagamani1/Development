@@ -13,3 +13,5 @@ Port no: 0-1024 reserved
 80 - http
 443 - https
 23 - telnet
+
+Middleware allows to go from one page to other page only if certain criteria is met. Request passes through middlewares. Middlewares are just functions. We can do tasks like decoding , checking the keys etc.

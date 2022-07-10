@@ -1,0 +1,45 @@
+body {
+    font-size: 2rem;
+}
+
+#one {
+  color:yellow;
+}
+
+.heading.heading-1 {
+    /* 0020 */
+   color: green;
+}
+
+div.heading-1 {
+    /* 0011 */
+    color: brown;
+}
+
+.heading {
+    color: cyan;
+}
+
+.heading-1 {
+    color: black;
+}
+
+div {
+    color: blue;
+}
+
+div {
+    color: red;
+} 
+
+.last {
+  color: blue;
+}
+
+.last:hover {
+    color: cyan;
+}
+
+div div div div div div div div div div {
+    color: orchid !important;
+}

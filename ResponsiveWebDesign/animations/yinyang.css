@@ -1,0 +1,76 @@
+body {
+    background: pink;
+}
+.circle {
+    margin-top: 3rem;
+    box-sizing: border-box;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    padding-left: 50px;
+    background: linear-gradient(to left, 
+    #fff,
+    #fff 50%, 
+    #000 50%,
+    #000);  
+    animation: animation-circle 3s alternate infinite ;
+}
+
+
+.yinyang {
+    position: relative;
+    background: #fff;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-image: linear-gradient(to left,
+    #fff,
+    #fff 50%,
+    #000 50%,
+    #000);  
+    animation: animation-yinyang 2s ease-in-out infinite alternate forwards;
+}
+
+.yinyang::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    border : 18px solid #000;
+}
+
+.yinyang::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    border : 18px solid #fff;
+} 
+
+@keyframes animation-circle {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes animation-yinyang {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,320 @@
+Responsive : one UI, one design, fits all. developing responsive design is complex
+Adaptive : different UI's , developed separately. redundant but simple
+
+fluid grids, flexible images and media queries are 3 pillars of responsive web design - Ethan Marcotte
+
+CSS Units:
+----------
+1. fixed  - pixels (px) -  not responisve
+2. relative - em, rem, %, vh, vw, vmin, vmax, ch
+ If the root element is not given font size, it takes the default fontsize 16px(which may change acc to browsers)
+
+em : root emphasis elementunit- see the button example
+em : font-size relative to font-size of the parent. em fontsize is compound
+font-sixe -> x em (means  x*fontsize(closest parent))
+em used for margins, padding. In this case it also multiplies the font size value given to current element(margins,padding)
+margin : 0 auto => You can set the margin property to auto to horizontally center the element within its container.
+
+rem : (root em)fontsize relative to the root. 
+rem =  x*fontsize(root)
+
+viewport units:  used for headings
+vw : relative to entire screen. viewport width . max 100  - 1vw = 1% of the screen
+vh : viewport height max 100  - 1vh = 1% of the screen
+vmin : viewport min (vmin=min(height,width)) It changes acc to min value of the axis. If height is min, then if we change the height , the font-size changes acc to it. 
+vmax : viewport max (vmax=max(height,width))
+
+% : relative to parent
+
+** root font size = 10px
+
+difference b/w em and % : em works in multiplying option and % works in dividing factor
+
+padding: 
+--------
+When one value is specified, it applies the same padding to all four sides.
+When two values are specified, the first padding applies to the top and bottom, the second to the left and right.
+When three values are specified, the first padding applies to the top, the second to the right and left, the third to the bottom.
+When four values are specified, the paddings apply to the top, right, bottom, and left in that order (clockwise).
+
+Media Queries:
+--------------
+
+@media all/screen/print/speech  and (conditions)
+
+media = keyword
+all/screen/print/speech = what are we writing media query for
+
+media query default is set to all
+
+
+Eg: 
+@media screen and (max-width: 500px) {
+     body {
+         color: blue;
+     }
+}
+
+css read from top to bottom. so order matters in css
+!important given to element in css. It makes it important. Goes to top of specificity
+If same selector exists at multiple locations, selector closer to the end of the file, will take precedence.
+Generic/default styles should be present on top
+
+landscape: width greater than height
+portrait: height greater than width
+
+@media (condition1) and/or (condition2) and/or (condition3)
+and = and
+or = ,
+
+Flexboxes and Grids:
+--------------------
+By default display: block
+
+***
+A flex box is a container with 2 axis : 
+main axis : horizontal axis (default)
+cross axis : vertical axis
+
+A flexbox is a container which aligns its contents on main and cross axis based on properties we provided
+
+you can position all child elements -> by applying properties to parent elements
+
+justify-content will arranges the flex items along the main axis
+flex-container : justify-content : flex-start | flex-end | center | space-around | space-between | space-evenly
+space-between : arranges items with distance of x between them.corner-left and corner right are 0
+space-around :  arranges items with distance of x between them.corner-left and corner right are x/2
+space-evenly : arranges items with distance of x between them.corner-left and corner right are x
+
+align-items will arranges the flex items along the cross axis.
+align items : default value is stretch
+align-items : stretch | flex-start | flex-end |  space-around | space-between | space-evenly | center
+
+align-content : will arrange all the items considering all axis as one unit and arranges it in flex-container
+default value for align-content : stretch
+order property will mess the accessibility. avoid using it.
+
+flex-direction :  row | column
+flex-direction by default row
+flex-direction column will tilts the flex-container along the vertical axis. main axis becomes vertical and cross-axis becomes horizontal
+
+properties: 
+-----------
+flex-shrink : 0  -> don't shrink. Default value = 1
+flex-grow will distribute the left over space for the items
+flex-grow : default value = 0
+flex-basis : default value : it will take initial length/width of the flexible item
+flex-basis value will resets original width to specified value
+
+shorthand to give all 3 values in single line we use flex
+flex : grow shrink basis
+default value of flex: 0 1 auto
+
+align-self will allow to change the position of the individual elements
+along the cross axis
+
+margin: 0 auto => will center horizontally
+
+Tricks:
+-------
+-> write global css first (typography, variables,spacing(margins,padding), colors, normalization(unset the styling see button css))
+-> avoid fixed sizes (px)
+-> design mobile first (mobile layouts are simpler)
+   use media queries to add complexity
+   mobile -> web (use min-widths)
+   web -> mobile (use max-widths)
+-> dont overdo breakpoints (means defining for different screen sizes)
+
+
+Positions:
+----------
+By default value of position is static
+position : absolute -> it will set relative to the screen(viewport)
+
+Grids in CSS:
+-------------
+flex-boxes are used to align items in 1D format.
+Grid is 2D format
+
+grid-template-columns: <1> <2> <3> .... n number of values
+fr unit is specific for grids. it will consider wrt to viewport
+if we give 1fr 1fr -> it will create 2 equivalent columns
+
+1fr, 1fr, 1fr = repeat(3,1fr)
+
+By default grid would keep on creating rows to fit all elements
+
+grid-template-rows
+grid-auto-rows : whenever a new row is created set this as elements default value.
+ By default value is auto which means take up the size of the element
+
+ gap: value will be added b/w the rows and also columns. (we can use grid-column-gap, grid-row-gap)
+
+ grid-column : span x (x=-1 means end column or respresents end of the grid)
+
+grid-column: start column / end column
+
+grid-template-areas : will create one column with different rows having labels
+
+place-items : align-items justify-items
+place-items : center center
+
+Specificity & Animations :
+--------------------------
+
+Specificity Hierarchy
+Every CSS selector has its place in the specificity hierarchy.
+
+There are four categories which define the specificity level of a selector:
+
+Inline styles - Example: <h1 style="color: pink;">
+IDs - Example: #navbar
+Classes, pseudo-classes, attribute selectors - Example: .test, :hover, [href]
+Elements and pseudo-elements - Example: h1, :before
+
+css read from top to bottom. So any style with same specificity, which is defined last in the css file will take precedence.
+
+specifity score :
+---------------
+
+element & pseudo elements : 0001
+class & pseudo classes : 0010
+ID : 0100
+inline style : 1000
+!important : 10000
+* : 0
+
++,  > still considered to be one element
+
+Avoid using IDs & !important in css. Use classes as much as possible
+
+Combinators:
+------------
+Descendant combinator : space
+typically represented by a single space (" ") character — combines two selectors such that elements matched by the second selector are selected if they have an ancestor (parent, parent's parent, parent's parent's parent, etc) element matching the first selector.
+
+Child combinator : > t matches only those elements matched by the second selector that are the direct children of elements matched by the first.
+
+Adjacent sibling combinator: + It matches only those elements matched by the second selector that are the next sibling element of the first selector. 
+
+General sibling combinator: ~ If you want to select siblings of an element even if they are not directly adjacent, then you can use the general sibling combinator (~).
+
+Animations:
+-----------
+
+2 properties : transitions, Animations
+transform: translateX(100%);
+
+transition : property duration timing-function delay
+by default property set to all (but never use this default value all, as it is cpu intensive.so specify what is necessary)
+
+timing-function curve plotted on speed and movement
+ease-in-out: start slowly, move fast and close/end slowly
+ease-in(starts slowly, move fast), ease-out(move fastly,end slowly), linear, cubic-bazier(s)
+
+cubic-bazier curve which defines animation motion wrt time
+
+animation: animation-name animation-duration timing-function delay
+
+animation-fill-mode: forwards (after reaching 100%, it stays there. fills element state after animation )
+animation-iteration-count : infinite ( to repeat animation multiple times )
+animation-direction: alternate or alternate-reverse; go in the straightway and alternate
+animation-play-state : running / paused
+
+@keyframes animation-name {
+    0% {
+
+    }
+    30% {
+
+    }
+    100% {
+
+    }
+}
+100% is final form of the animation
+
+Dont overdo animations. Use the right properties to animate. transform and opacity.
+Keep animations short
+
+Performance : rendering(layout), painting, idle time
+There will be huge performance costs if we use css properties other than tranform, opacity for animations.
+Can check in browser performance tools by setting cpu throttling
+
+Bootstrap and SASS:
+-------------------
+Bootstrap is a framework for css.
+materialize.css,w3.css
+
+bootstarp-grid system : divides entire screen into 12 columns
+bootstrap breakpoints : x-small, small, medium, large, extra large, extra extra large
+ gutters in bootstrap : provides padding left and right
+ bootstrap row gives -ve margin
+
+dont use margin while learning
+very dense
+quick easy setup
+
+SASS : (Syntactically Awesome Stylesheet)
+------
+
+SASS is a preprocessor to CSS
+sass --watch styles.scss(watch this) : dist/css(compile this)
+dist stands for distribution.This folder contains all of the files that need to be put on server to run our website
+
+Bundler :
+--------
+index.html
+assets folder : fonts(.ttf), images(.jpeg), audios
+scripts : js files/ts files
+css : styles
+
+bundler will take all the above files and put them in a directory as a bundle. This process is done by bundler. 
+Very popular reactjs bundler is webpack.
+There is another bundler is parcel
+
+3 ways to setup sass :
+1. use extension in vs code - live server sass
+2. install npm sass package and watch files by creating dist folder.
+   -> nom init
+   -> npm install sass --save-dev
+   -> sass --watch main.scss:main.css
+
+3. npm install parcel-bundler
+use scss file in index.html 
+    <link rel="stylesheet" href="styles.scss" />
+add these 2 lines in package.json when using parcel bundler
+"scripts": {
+    "dev" : "parcel bootstrap-sass/index.html",
+    "build" : "parcel build bootstrap-sass/index.html"
+  },
+
+Features of sass:
+-----------------
+1. Nesting
+  eg: 
+  
+  .wrapper {
+    font-size: 3rem;
+    
+    &:hover {
+        color: blue;
+    }
+}
+
+BEM : block element modifier
+The Block, Element, Modifier methodology (commonly referred to as BEM) is a popular naming convention for classes in HTML and CSS.
+
+box__small-box : __ specifies element lies in box.  Child items, or elements, can be placed inside and these are denoted by two underscores
+following the name of the block
+
+box__small-box--green : here green is a modifier. modifiers can manipulate the block so that we can theme or style that particular component without inflicting changes on a completely unrelated module. This is done by appending two hyphens to the name of the block 
+
+2. Inheritance : use the keyword @extend
+3. Mixins : @mixin and @include, @content
+4. @use 'sass:map' check example in styles.scss
+5. Partials : You can create partial Sass files that contain little snippets of CSS that you can include in other Sass files. 
+   This is a great way to modularize your CSS and help keep things easier to maintain. A partial is a Sass file named with a 
+   leading underscore. You might name it something like _partial.scss. The underscore lets Sass know that the file is only a
+    partial file and that it should not be generated into a CSS file. Sass partials are used with the @use rule.
+6. loops : 

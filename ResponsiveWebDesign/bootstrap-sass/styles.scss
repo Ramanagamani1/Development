@@ -1,0 +1,105 @@
+@use 'sass:map';
+@import 'colors';
+@import 'font';
+
+$red: red;
+
+$breakpoints:(
+   small: 576px,
+   medium: 768px,
+   large: 992px
+);
+
+div {
+    p {
+        color: $red;
+    }
+}
+
+.wrapper {
+    font-size: 3rem;
+
+    &:hover {
+        color: blue;
+    }
+}
+
+// BEM
+.box {
+    height: 200px;
+    aspect-ratio: 1;
+
+    &__small-box {
+
+        height: 100px;
+        aspect-ratio: 1;
+
+        &--green{
+            background: green;
+        }
+    }
+}
+
+//Inheritance 
+%button {
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    font-weight: bold;
+}
+
+.button-primary {
+    @extend %button;
+
+    background:blue;
+    color: blue;
+}
+
+.button-secondary {
+    @extend %button;
+    border: 1px solid blue;
+    color: blue;
+}
+
+// @mixin, @include, @content
+
+@mixin apply_media_query($size) {
+   @media screen and (max-width: $size) {
+      @content;
+   }
+}
+
+.red {
+    @include apply_media_query(567) {
+        background: blue;
+        font-size: black;
+    }
+}
+
+// map
+
+@mixin apply_media_query($key) {
+    $size: map.get($breakpoints, $key);
+
+    @media screen and (max-width: $size) {
+       @content;
+    }
+ }
+ 
+ .red {
+     @include apply_media_query(large) {
+         background: blue;
+         font-size: $font-large;
+     }
+ }
+
+ @for $i from 1 through 12 {
+    .col-#{$i} {
+        flex: 0 0 (100/(12/$i));
+    }
+ }
+
+ @each $key,$value in $colors {
+    .text-#{$key} {
+        color: $value;
+    }
+ }

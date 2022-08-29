@@ -1,0 +1,40 @@
+@import "settings/reset.scss";
+@import "settings/variables.scss";
+@import "layouts/container.scss";
+@import "components/start.scss";
+@import "components/hangman.scss";
+@import "components/word.scss";
+@import "components/lives.scss";
+
+body {
+  background: linear-gradient(to right, #d3f4fc 0%, #b2fc8a 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.alphabets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.word-flex {
+  margin-bottom: 5rem;
+}

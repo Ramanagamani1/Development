@@ -1,0 +1,70 @@
+Babel is a transpiler (converting from typescript to javascript) and from JSX to javascript
+React is responsible for creating components in memory
+Actual DOM is when the react dom renders
+import React from 'react' => this import is used to convert jsx to javascript.(React.createElement)
+Nodejs is an interpreted language. Used for bundling and minified the project. 
+Webpack library runs all the buildtools like babel for converting jsx to js and also use sass loader for scss files
+Babel is a tool used by webpack. Babel is a transpiler whereas webpack is bundler
+dist is a distribution folder which contains all html , css and js files code
+
+webpack-cli : it will call the webpack library
+dist : distribution
+
+Pure functions never mutate the global state and also if we give same args are same output will be same
+
+Setting up react project from scratch
+-------------------------------------
+npm init
+npm install webpack
+npm install -D webpack = to install webpack in dev dependencies
+npm install babel-loader
+npm install babel @babel/preset-react
+npm install webpack-cli
+then include webpack.config.js file which contains entry point of the app and also has rules like js files are run using babel loader
+npm install react-dom
+npm install sass-loader sass webpack --save-dev => for using scss files
+also install style-loader and css-loader 
+
+npm install @babel/core@7 @babel/preset-env@7
+
+nvm - node version manager. It enables us to have multiple versions of node in our system
+nvm use versionname
+to know list of versionnames : nvm ls
+node-sass is a preprocessor. node-sass does not work with version 15.
+sass transpiles to css
+jsx transpiles to js
+node-sass is implementation of transpilation of sass to css whereas sass-loader loads this implementation into webpack
+.scss file using style-loader and css-loader will be included in dist/main.js file and it renders a css on the fly within the broser.
+sass loader converts scss to css, css loader converts css to JS representation, style loader converts that JS into style tags
+BEM - Block Element Modifier
+
+Approach:
+----------
+Logic
+State
+Presentation
+
+React elements are part of virtual dom. HTML elements will be in actual dom
+
+Color Palettes:
+---------------
+color hunt website
+coolors website
+
+when the content is not of semantic importance we use ::after and ::before
+
+place-items = <'align-items'> <'justify-items'>?  
+translate3d = tx ty tz
+
+httpstatuses.com
+
+ORM:
+----
+Object Relational Mapping
+Cassandra - RDBMS + Document 
+Converting a class object into a particular encoded format(like string) and sent over internet to client is called Serialization.
+MIME types(Multipurpose Internet Mail Extensions ) - content type/json, html, application
+
+we use sequelize orm
+
+the sole responsibility of the serializer is tp convert the database data into a json

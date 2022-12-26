@@ -1,0 +1,29 @@
+{
+    "products" : [
+        {
+            "id" : 1,
+            "title": "Samsung",
+            "price" : "10,000"
+        },
+        {
+            "id" : 2,
+            "title": "Honor",
+            "price" : "30,000"
+        },
+        {
+            "id" : 3,
+            "title": "Apple Iphone 13",
+            "price" : "100,000"
+        },
+        {
+            "id" : 4,
+            "title": "Nokia 1200",
+            "price" : "2,000"
+        },
+        {
+            "id" : 5,
+            "title": "Samsung Galaxy 10",
+            "price" : "25,000"
+        }
+    ]
+}

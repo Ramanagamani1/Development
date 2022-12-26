@@ -122,7 +122,7 @@
   }
 }
 
-/*@media screen and (max-width:900px) {
+@media screen and (max-width:900px) {
    .hangman-container {
       position: relative;
       height: 65vh;
@@ -134,6 +134,42 @@
       box-sizing: border-box;  
    }
    .pole {
-      height: 400px;
+     height: 480px;
+
+     &::before {
+      background: brown;
+      content: "";
+      height: 6.0rem;
+      position: absolute;
+      left:0;
+      top: 430px;
+      width: 8px;
+      transform: rotate(90deg);
+     }
    }
-}*/
+   .hangman {
+    position: relative;
+    
+    &__element {
+      opacity: 0.25;
+      
+      &:nth-child(2) {
+        position: absolute;
+        height: 200px;
+        left: 55px;
+      }
+       &:nth-child(5) {
+         position: absolute;
+         transform : rotate(45deg);
+         top : 300px;
+         left : 20px;
+      }
+      &:nth-child(6) {
+         position: absolute;
+         transform : rotate(-45deg);
+         top : 300px;
+         left : 90px;
+      }
+    }
+  }
+}

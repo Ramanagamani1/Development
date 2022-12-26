@@ -4,12 +4,12 @@ export default function Word({maskedWord}) {
     return (
         <div className="display-flex justify-content-around word-flex">
             {
-                maskedWord.map((letter) => (
+                maskedWord.map((letter,index) => (
                     <>
                       { letter!="_" ? (
-                         <div className="word">{letter}</div>
+                         <div className="word" key={index}>{letter}</div>
                       ) : (
-                          <div className="word">&nbsp;_&nbsp;</div>
+                          <div className="word" key={index}>&nbsp;_&nbsp;</div>
                       )}
                     </>
                 ))

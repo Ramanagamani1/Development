@@ -63,6 +63,24 @@
     }
   }
 
-  button:disabled {
-      text-decoration: line-through red;
+.start-button:disabled {
+  text-decoration: line-through 5px greenyellow;
+}
+
+@media screen and (max-width:900px) {
+  .start-container {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 300px;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
   }
+  .start-button {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+}

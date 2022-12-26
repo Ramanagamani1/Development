@@ -38,3 +38,15 @@ body {
 .word-flex {
   margin-bottom: 5rem;
 }
+
+@media screen and (max-width:900px) {
+  .word-flex {
+      margin-bottom: 3.5rem;
+      margin-top: 3.5rem;
+  }
+  .alphabets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

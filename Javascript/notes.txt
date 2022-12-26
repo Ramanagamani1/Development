@@ -264,3 +264,41 @@ Actions contain the type and payload. Reducer accepts the dispatched actions and
 Reducer performs actions on the current state of data and it will update data in the redux store.
 
 Dispatch is responsible for passing the actions to reducer.
+
+
+Implicit Coercion: https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/
+-----------------
+Boolean('')           // false
+Boolean(0)            // false     
+Boolean(-0)           // false
+Boolean(NaN)          // false
+Boolean(null)         // false
+Boolean(undefined)    // false
+Boolean(false)        // false
+
+Boolean({})             // true
+Boolean([])             // true
+Boolean(Symbol())       // true
+!!Symbol()              // true
+Boolean(function() {})  // true
+
+
+true + false => 1
+12 / "6" => 2
+"number" + 15 + 3 => 'number153'
+15 + 3 + "number" => '18number'
+[1] > null => true
+"foo" + + "bar" => 'fooNaN'
+'true' == true => false
+false == 'false' => false
+null == '' => false
+!!"false" == !!"true" => true
+[‘x’] == ‘x’ => true
+[] + null + 1 => 'null1'
+[1,2,3] == [1,2,3] => false
+{}+[]+{}+[1] => '0[object Object]1'
+!+[]+[]+![] => 'truefalse'
+new Date(0) - 0 => 0
+new Date(0) + 0 => 'Thu Jan 01 1970 05:30:00 GMT+0530 (India Standard Time)0'
+
+https://codesandbox.io/s/silent-feather-s1wrym?file=/src/index.js

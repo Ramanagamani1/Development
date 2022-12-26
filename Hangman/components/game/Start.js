@@ -6,7 +6,7 @@ export default function Start({onStart, isRunning}) {
     return (
         <div className="start-container">
             <div>
-                <input type="text" placeholder="Name" className={`start-input ${isRunning && 'display-none'}`} onChange={(e)=> setName(e.target.value)} name={name}/>
+                <input type="text" placeholder="Please enter your name..." className={`start-input ${isRunning && 'display-none'}`} onChange={(e)=> setName(e.target.value)} name={name}/>
             </div>
             <button className={`start-button ${isRunning && 'display-none'}`} onClick={()=>onStart(name)}>
                 Start

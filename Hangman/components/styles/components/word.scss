@@ -4,3 +4,8 @@
     color: $dark-color;
 }
 
+@media screen and (max-width:900px) {
+    .word {
+        font-size: 3.5rem;
+    }
+}

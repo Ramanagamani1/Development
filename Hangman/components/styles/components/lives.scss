@@ -5,3 +5,14 @@
     font-size: 2rem;
     font-family: 'Merienda', cursive;
 }
+
+@media screen and (max-width:900px) {
+     .lives {
+        left: 15rem;
+     }
+}
+@media screen and (max-width:400px) {
+    .lives {
+       left: 3rem;
+    }
+}

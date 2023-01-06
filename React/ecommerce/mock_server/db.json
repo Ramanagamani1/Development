@@ -1,29 +1,103 @@
 {
+    "categories": [
+       {
+        "id" : 1,
+        "name" : "Mobiles"
+       },
+       {
+        "id": 2,
+        "name" : "Laptops"
+       },
+       {
+        "id" : 3,
+        "name": "Clothes"
+       }
+    ],
+
     "products" : [
         {
             "id" : 1,
+            "category" : 1,
             "title": "Samsung",
-            "price" : "10,000"
+            "price" : 10000
         },
         {
             "id" : 2,
+            "category" : 1,
             "title": "Honor",
-            "price" : "30,000"
+            "price" : 30000
         },
         {
             "id" : 3,
+            "category" : 1,
             "title": "Apple Iphone 13",
-            "price" : "100,000"
+            "price" : 100000
         },
         {
             "id" : 4,
+            "category" : 1,
             "title": "Nokia 1200",
-            "price" : "2,000"
+            "price" : 2000
         },
         {
             "id" : 5,
+            "category" : 1,
             "title": "Samsung Galaxy 10",
-            "price" : "25,000"
+            "price" : 25000
+        },
+        {
+            "id" : 6,
+            "category" : 1,
+            "title": "Vivo",
+            "price" :  5000
+        },
+        {
+            "id" : 7,
+            "category" : 1,
+            "title": "Oppo",
+            "price" : 4000
+        },
+        {
+            "id" : 8,
+            "category" : 1,
+            "title": "HTC",
+            "price" : 25000
+        },
+        {
+            "id" : 9,
+            "category" : 1,
+            "title": "One Plus",
+            "price" : 40000
+        },
+        {
+            "id" : 10,
+            "category" : 1,
+            "title": "Sony",
+            "price" : 15000
+        },
+        {
+            "id" : 11,
+            "category" : 2,
+            "title": "Apple Macbook Air M1",
+            "price" : 4000
+        },
+        {
+            "id" : 12,
+            "category" : 2,
+            "title": "HP Pavilion E5",
+            "price" : 60000
+        },
+        {
+            "id" : 13,
+            "category" : 3,
+            "title": "Lehenga",
+            "price" : 40000
+        },
+        {
+            "id" : 14,
+            "category" : 3,
+            "title": "T-Shirt",
+            "price" : 15000
         }
     ]
 }

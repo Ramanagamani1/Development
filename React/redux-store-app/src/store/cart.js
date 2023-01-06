@@ -1,9 +1,27 @@
 // ACTION TYPES
 const TOGGLE_CART = "cart/TOGGLE_CART"
-const ADD_TO_CART = "cart//ADD_TO_CART"
+const ADD_TO_CART = "cart/ADD_TO_CART"
 const REMOVE_FROM_CART = "cart/REMOVE_FROM_CART"
+const UPDATE_TOTAL = "cart/UPDATE_TOTAL"
 
 // ACTIONS
+
+export function getCartTotal(items) {
+    console.log(items)
+    let total = 0;
+    Object.keys(items).forEach(itemId => {
+        const item = items[itemId];
+        total += item.quantity * item.price;
+    });
+    return total;
+}
+
+export const getTotal = (state) => {
+    return {
+        type: UPDATE_TOTAL,
+        payload: state
+    }
+}
 
 export const toggleCart = (isOpen) => {
      return {
@@ -30,7 +48,8 @@ export const removeFromCart = (item) => {
 
 export default function reducer(state = {
     isOpen:false,
-    items: {}
+    items: {},
+    total: 0
 }, action) {
     switch(action.type) {
         case TOGGLE_CART : 
@@ -69,6 +88,12 @@ export default function reducer(state = {
                 ...state,
                 items : {...state.items}
             }
+        }
+        case UPDATE_TOTAL: {
+             return {
+                ...state,
+                total : getCartTotal(state.items)
+             }
         }
         default:
             return state;

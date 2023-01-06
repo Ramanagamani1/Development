@@ -134,8 +134,8 @@ a:hover {
     padding: 1rem;
     height:100vh;
     color:black; 
-    z-index: 2;
-  
+    z-index: 2; 
+    font-weight: 700;
 }
 
  .cart-header {
@@ -202,16 +202,27 @@ a:hover {
 }
 
 .button {
-    padding: 10px;
+    padding: 8px;
     background-color: rgb(237, 50, 12);
     color: white;
     cursor: pointer;
     border-radius: 4px;
     box-shadow: none !important;
     outline: none !important;
-    height: 40px;
+    height: 35px;
 }
 
 .active {
     color:rgb(71, 235, 240);
 }
+
+.cart-footer {
+    padding: 10px;
+    border-top: 1px solid #e2e2e2;
+  }
+
+  .cart-empty {
+    padding: 20px;
+    text-align: center;
+  }
+  

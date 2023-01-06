@@ -6,13 +6,12 @@ import AddRemoveButton from './AddRemoveButton';
 
 export default function Cart() {
 
-  const {isOpen,items} = useSelector((state) => state.cartStore);
+  const {isOpen,items,total} = useSelector((state) => state.cartStore);
   const dispatch = useDispatch();
   const cartItemIds = Object.keys(items);
-  console.log(cartItemIds)
   const bodyUI = () => {
     if(cartItemIds.length<=0){
-        return <h2>Your cart is empty</h2>
+        return <div className='cart-empty'>Your cart is empty</div>
     }
     else {
         return (
@@ -20,7 +19,7 @@ export default function Cart() {
                 {
                     cartItemIds.map((id)=>{
                     return (
-                      <div className='cart-item'>
+                      <div key={id} className='cart-item'>
                             <div className="cart-item-top">
                             <div className="cart-item-title">{items[id].name}</div>
                             <AddRemoveButton item={items[id]}/>
@@ -45,6 +44,11 @@ export default function Cart() {
           }}>Close</button>
        </div>
        {bodyUI()}
+        
+        <div className="cart-footer">
+          <b>Cart Total:</b> <span className="bold">₹{total}</span>
+        </div>
+       
     </div>
   )
 }

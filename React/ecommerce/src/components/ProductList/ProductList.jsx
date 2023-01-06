@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect,memo} from 'react';
 import ProductCard from '../ProductCard';
 
 
@@ -42,13 +42,19 @@ function ProductList() {
             console.log(error)
             setError(error)
         })*/
-        async function loadProducts() {
-            const response = await fetch("http://localhost:3001/products");
-            const result = await response.json();
-            setIsLoading(false);
-            setProducts(result);
+        try {
+            async function loadProducts() {
+                const response = await fetch("http://localhost:3001/products");
+                const result = await response.json();
+                setIsLoading(false);
+                setProducts(result);
+            }
+            loadProducts();
         }
-        loadProducts();
+        catch(error) {
+            setError(error)
+        }
+        
     }, []);
 
     if (error) {
@@ -62,7 +68,12 @@ function ProductList() {
                 <div>
                 {
                     products.map(item => {
-                        return <ProductCard item={item}/>
+                        return (
+                          <ProductCard 
+                            key= {item.id} 
+                            product= {item}
+                            />
+                        )
                     })
                 }
                 </div>
@@ -70,4 +81,5 @@ function ProductList() {
     }
 }
 
-export default ProductList;
+export default memo(ProductList);
+// export default ProductList;

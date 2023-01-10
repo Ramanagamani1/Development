@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import ProductList from './components/ProductList';
-import Cart from './components/Cart';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showCart } from './components/store/store';
-import store from './components/store/index';
+import store from './store/index';
+import { Route, Switch } from 'react-router-dom';
+import CartPage from './pages/CartPage';
+import ProductsPage from './pages/ProductsPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+
 
 /*
    cart
@@ -20,7 +23,7 @@ import store from './components/store/index';
 
 function App() {
   console.log(store.getState())
-  const [cart, setCart] = useState({});
+  //const [cart, setCart] = useState({});
   //const [showCart, setShowCart] = useState(false);
 
   const isCartOpen = useSelector(state=> {
@@ -29,7 +32,7 @@ function App() {
 
   const dispatch = useDispatch();
 
-  function increaseQuantity(product) {
+  /*function increaseQuantity(product) {
         const newCart = {
           ...cart
         }
@@ -60,21 +63,20 @@ function App() {
          
         setCart(newCart)
       
-  }
+  }*/
 
 
   return (
     // <CartContext.Provider value={{cart, increaseQuantity,decreaseQuantity}}>
     <>
-    <div>
-       <button onClick={()=> dispatch(showCart(!isCartOpen))}>{
-          isCartOpen ? 'Close Cart' : 'Open Cart'
-        }</button>
-       <div>{ isCartOpen && <Cart /> }</div>   
-    </div>
-    <ProductList/>
+      <Switch>
+        <Route exact path="/cart" component={CartPage} />
+        <Route exact path="/" component={ProductsPage} />
+        <Route exact path="/categories/:categoryId" component={ProductsPage} />
+        <Route  component={NotFoundPage} />
+      </Switch>
     </>
-    // </CartContext.Provider> -,
+    // </CartContext.Provider>,
   );
 }
 

@@ -1,6 +1,7 @@
 import React, {useState, useEffect,memo} from 'react';
+import { useSelector } from 'react-redux';
 import ProductCard from '../ProductCard';
-
+import styles from './ProductList.module.css';
 
 
 /*function getProductApi(callback) {
@@ -9,10 +10,12 @@ import ProductCard from '../ProductCard';
     },1000);
 }*/
 
-function ProductList() {
+function ProductList({categoryId}) {
     const [isLoading, setIsLoading] = useState(false);
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null)
+
+    //const selectedCategoryId = useSelector(state=>state.categories.selectedCategoryId)
 
     useEffect(()=> {
         /*getProductApi((myproducts)=> {
@@ -44,18 +47,23 @@ function ProductList() {
         })*/
         try {
             async function loadProducts() {
-                const response = await fetch("http://localhost:3001/products");
+                const response = await fetch(`http://localhost:3001/categories/${categoryId}/products`);
                 const result = await response.json();
                 setIsLoading(false);
                 setProducts(result);
             }
+            if (!categoryId) return;
             loadProducts();
         }
         catch(error) {
             setError(error)
         }
         
-    }, []);
+    }, [categoryId]);
+
+    if (!categoryId) {
+         return <div>Select a category</div>
+    }
 
     if (error) {
         return <div>Something went wrong...</div>
@@ -63,9 +71,10 @@ function ProductList() {
     else if (isLoading) {
         return <div>Loading...</div>
     }
-    else {
+    else if (products.length > 0) {
+   
             return (
-                <div>
+                <div className={styles.list}>
                 {
                     products.map(item => {
                         return (
@@ -78,8 +87,10 @@ function ProductList() {
                 }
                 </div>
             )
+    } else {
+        return <div>No products found.Try different category!</div>
     }
 }
 
-export default memo(ProductList);
 // export default ProductList;
+export default memo(ProductList);

@@ -1,5 +1,4 @@
 import React from 'react'
-import AddToCart from '../AddToCart/AddToCart';
 import ReduxAddToCart from '../ReduxAddToCart/ReduxAddToCart';
 import classes from "./ProductCard.module.css";
 

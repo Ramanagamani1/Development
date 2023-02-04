@@ -7,6 +7,7 @@ const SHOW_CART = 'SHOW_CART'
 const CHECKOUT_INIT = 'CHECKOUT_INIT'
 const CHECKOUT_DONE = 'CHECKOUT_DONE'
 const CHECKOUT_ERROR = 'CHECKOUT_ERROR'
+const CHECKOUT_SUCCESS_NAVIGATION = 'CHECKOUT_SUCCESS_NAVIGATION'
 
 
 // action creator functions
@@ -27,6 +28,12 @@ export function removeFromCart(product) {
     return {
         type: REMOVE_FROM_CART,
         payload: product
+    }
+}
+
+export function resetSuccess() {
+    return {
+       type: CHECKOUT_SUCCESS_NAVIGATION
     }
 }
 
@@ -72,7 +79,7 @@ export function placeOrder() {
 
 // Reducers
 function cartReducer(state = {
-    items:{},
+    items: JSON.parse(localStorage.getItem('cart_state') || '{}'),
     isCartOpen: false,
     isSubmitting : false,
     isSubmitSuccess : false,
@@ -139,10 +146,13 @@ function cartReducer(state = {
             return {...state, isSubmitting: true}
         }
         case CHECKOUT_DONE: {
-            return {...state, isSubmitting: false, submitError:null,isSubmitSuccess: true}
+            return {...state, isSubmitting: false, submitError:null,isSubmitSuccess: true, items: {}}
         }
         case CHECKOUT_ERROR: {
             return {...state, isSubmitting: false, submitError: action.payload}
+        }
+        case CHECKOUT_SUCCESS_NAVIGATION : {
+            return {...state, isSubmitSuccess: false}
         }
         default :
            return state;

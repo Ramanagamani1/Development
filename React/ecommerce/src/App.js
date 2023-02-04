@@ -5,6 +5,9 @@ import { Route, Switch } from 'react-router-dom';
 import CartPage from './pages/CartPage';
 import ProductsPage from './pages/ProductsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import OrdersPage from './pages/OrdersPage';
+import BestPracticesPage from './pages/BestPracticesPage';
+import usePersistentCart from './hooks/usePersistentCart';
 
 
 
@@ -32,6 +35,7 @@ function App() {
 
   const dispatch = useDispatch();
 
+  usePersistentCart();
   /*function increaseQuantity(product) {
         const newCart = {
           ...cart
@@ -73,6 +77,8 @@ function App() {
         <Route exact path="/cart" component={CartPage} />
         <Route exact path="/" component={ProductsPage} />
         <Route exact path="/categories/:categoryId" component={ProductsPage} />
+        <Route exact path="/orders" component={OrdersPage} />
+        <Route exact path="/best-practices" component={BestPracticesPage} />
         <Route  component={NotFoundPage} />
       </Switch>
     </>
@@ -84,6 +90,7 @@ export default App;
 
 
 /*
+  accordian -> expand/collapse section
   The import './components/ProductList' will first go to components folder and
   check if ProductList.js or ProductList.jsx is present. If it did not find that
   file then it will check for ProductList/index.js
@@ -100,4 +107,18 @@ export default App;
   4. parent re-renders
 
   Memo function will not render the component when the parent rerendered
+
+  LocalStorage/SessionStorage -> 5MB
+  Cookie -> Max 4KB
+
+  Rendering hooks conditionally is not allowed
+
+  Only call hooks at the top level.
+  Don't call hooks inside loops,conditions,or nested functions
+  Only call hooks from React functions
+  DOnt call hooks from Regular Javascript functions
+
+  Named Exports and Default Exports
+
+  ref = useRef() to access dom element
 */

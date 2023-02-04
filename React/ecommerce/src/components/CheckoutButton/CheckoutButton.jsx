@@ -1,14 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { placeOrder } from "../../store/cart";
+import { useHistory } from "react-router-dom";
+import { placeOrder, resetSuccess } from "../../store/cart";
 
 function CheckoutButton() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const isSubmitting = useSelector(state => state.cart.isSubmitting)
+    const isSuccess = useSelector(state=>state.cart.isSubmitSuccess)
 
     function handlePlaceOrder() {
         dispatch(placeOrder());
     }
+
+    useEffect(() => {
+        if(isSuccess) {
+            history.push("/orders")
+            dispatch(resetSuccess())
+        }
+    }, [isSuccess])
+    
 
     return (
         <>

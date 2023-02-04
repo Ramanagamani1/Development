@@ -1,5 +1,4 @@
 import React, {useState, useEffect,memo} from 'react';
-import { useSelector } from 'react-redux';
 import ProductCard from '../ProductCard';
 import styles from './ProductList.module.css';
 
@@ -11,7 +10,7 @@ import styles from './ProductList.module.css';
 }*/
 
 function ProductList({categoryId}) {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null)
 
@@ -45,27 +44,27 @@ function ProductList({categoryId}) {
             console.log(error)
             setError(error)
         })*/
+        async function loadProducts() {
         try {
-            async function loadProducts() {
+           
                 const response = await fetch(`http://localhost:3001/categories/${categoryId}/products`);
                 const result = await response.json();
                 setIsLoading(false);
                 setProducts(result);
+            }catch(error) {
+                setError(error)
             }
-            if (!categoryId) return;
-            loadProducts();
+            
         }
-        catch(error) {
-            setError(error)
-        }
-        
+        if (!categoryId) return;
+            loadProducts();   
     }, [categoryId]);
 
     if (!categoryId) {
          return <div>Select a category</div>
     }
 
-    if (error) {
+    else if (error) {
         return <div>Something went wrong...</div>
     }
     else if (isLoading) {
